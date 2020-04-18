@@ -1,9 +1,17 @@
+# Build
+/build/
 
-# Godot-specific ignores
+# Godot Engine generated files
 .import/
 export.cfg
 export_presets.cfg
 
-# Mono-specific ignores
+# Mono
 .mono/
-data_*/
+/Properties/
+*.csproj
+*.sln
+mono_crash.*
+
+# GNU nano
+*.swp
