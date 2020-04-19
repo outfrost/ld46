@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="CollisionTest" type="Spatial"]
+
+[node name="CSGBox" type="CSGBox" parent="."]
+use_collision = true
+width = 16.8374
+depth = 14.0988
+
+[node name="CSGCylinder" type="CSGCylinder" parent="CSGBox"]
+operation = 2
+use_collision = true
+radius = 3.0
+height = 4.00679
