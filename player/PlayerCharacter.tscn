@@ -13,6 +13,9 @@ radius = 0.75
 
 [node name="PlayerCharacter" type="RigidBody"]
 script = ExtResource( 1 )
+pickupRadius = 10.0
+movementForce = 10.0
+maxPlanarSpeed = 5.0
 
 [node name="Carrying" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )

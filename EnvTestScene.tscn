@@ -28,7 +28,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02866, 1.84993, -18.4475 )
 
 [node name="PlayerCharacter" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49535, 2.26648, -8.03181 )
-pickupRadius = 10.0
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 0.965926, -1.13133e-08, 0.258819, -0.258819, -4.2222e-08, 0.965926, 0, -1, -4.37114e-08, 12.9168, 7.1242, 0.977706 )

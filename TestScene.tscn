@@ -12,6 +12,15 @@
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 8, 16 )
 
+[node name="DebugLabel" type="Label" parent="Camera"]
+margin_right = 500.0
+margin_bottom = 250.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
 
@@ -28,4 +37,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02866, 1.84993, -18.4475 )
 
 [node name="PlayerCharacter" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49535, 2.26648, -8.03181 )
-pickupRadius = 10.0
