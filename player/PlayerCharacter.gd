@@ -2,16 +2,23 @@ extends RigidBody
 
 const vector_util = preload("res://util/vector_util.gd")
 
+enum JumpState {
+	IDLE,
+	AIRBORNE,
+}
+
 # Declare member variables here.
 export var pickupRadius: float
 export var movementForce: float
 export var maxPlanarSpeed: float
+export var jumpSpeed: float
 
 var scene: Node
 var camera: Camera
 var debugLabel: Label
 var carryingNode: Spatial
 var carriedItem: RigidBody = null
+var jumpState = JumpState.IDLE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +26,6 @@ func _ready():
 	camera = scene.get_node("Camera") as Camera
 	debugLabel = camera.get_node("DebugLabel") as Label
 	carryingNode = get_node("Carrying") as Spatial
-	print_debug(carryingNode)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -42,6 +48,10 @@ func process_movement_inputs():
 	if planarLinearSpeed > maxPlanarSpeed:
 		self.linear_velocity.x /= planarLinearSpeed / maxPlanarSpeed
 		self.linear_velocity.z /= planarLinearSpeed / maxPlanarSpeed
+	
+	if jumpState == JumpState.IDLE && Input.is_action_just_pressed("movement_jump"):
+		self.set_axis_velocity(Vector3.UP * jumpSpeed)
+		jumpState = JumpState.AIRBORNE
 
 func on_item_pickup():
 	if carriedItem != null:
