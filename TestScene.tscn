@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://environment/Terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://items/FeedItem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://default_env.tres" type="Environment" id=3]
 [ext_resource path="res://player/PlayerCharacter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://tree/Tree.tscn" type="PackedScene" id=5]
 
 [node name="TestScene" type="Spatial"]
 
@@ -27,13 +28,16 @@ environment = ExtResource( 3 )
 [node name="Items" type="Node" parent="."]
 
 [node name="FeedItem" parent="Items" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.17107, 4.36832, -4.63343 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5109, 2.24398, -5.30483 )
 
 [node name="FeedItem2" parent="Items" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0102, 3.34152, -14.515 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99977, 1.93074, 5.62246 )
 
 [node name="FeedItem3" parent="Items" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02866, 1.84993, -18.4475 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.09344, 2.5754, -15.1409 )
 
 [node name="PlayerCharacter" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49535, 2.26648, -8.03181 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4967, 2.26648, 4.13012 )
+
+[node name="Tree" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68489, 1, -6.86773 )

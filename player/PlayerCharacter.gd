@@ -26,6 +26,8 @@ func _ready():
 	camera = scene.get_node("Camera") as Camera
 	debugLabel = camera.get_node("DebugLabel") as Label
 	carryingNode = get_node("Carrying") as Spatial
+	
+	scene.get_node("Tree").connect("body_entered", self, "on_entered_tree")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -53,9 +55,23 @@ func process_movement_inputs():
 		self.set_axis_velocity(Vector3.UP * jumpSpeed)
 		jumpState = JumpState.AIRBORNE
 
-func on_item_pickup():
-	if carriedItem != null:
+func on_entered_tree(body):
+	if body != self:
 		return
+	on_item_drop()
+
+func on_item_pickup():
+	if carriedItem:
+		drop_item()
+	else:
+		pickup_item()
+
+func on_item_drop():
+	if carriedItem == null:
+		return
+	drop_item()
+
+func pickup_item():
 	var minDist = 0.0
 	var minDistItem = null
 	var items = scene.get_node("Items")
@@ -73,3 +89,12 @@ func on_item_pickup():
 		carryingNode.add_child(carriedItem)
 		carriedItem.set_transform(Transform.IDENTITY)
 		carriedItem.sleeping = true
+
+func drop_item():
+	carryingNode.remove_child(carriedItem)
+	scene.get_node("Items").add_child(carriedItem)
+	carriedItem.transform *= carryingNode.transform
+	carriedItem.transform *= self.transform
+	carriedItem.linear_velocity = self.linear_velocity + self.linear_velocity.normalized() * 3.0
+	carriedItem.sleeping = false
+	carriedItem = null
