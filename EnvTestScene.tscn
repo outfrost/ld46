@@ -37,7 +37,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0102, 3.34152, -14.515 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02866, 1.84993, -18.4475 )
 
 [node name="PlayerCharacter" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49535, 2.26648, -8.03181 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49795, 2.48595, -10.8238 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 0.965926, -1.13133e-08, 0.258819, -0.258819, -4.2222e-08, 0.965926, 0, -1, -4.37114e-08, 12.9168, 7.1242, 0.977706 )
@@ -49,4 +49,4 @@ spot_range = 11.8812
 spot_angle = 34.4586
 
 [node name="Tree" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.08198, 0, -6.07481 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.082, 1, -6.075 )
