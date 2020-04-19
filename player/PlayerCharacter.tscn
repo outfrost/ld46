@@ -13,9 +13,11 @@ radius = 0.75
 
 [node name="PlayerCharacter" type="RigidBody"]
 mode = 2
+mass = 50.0
+gravity_scale = 2.0
 script = ExtResource( 1 )
 pickupRadius = 10.0
-movementForce = 10.0
+movementForce = 750.0
 maxPlanarSpeed = 5.0
 jumpSpeed = 10.0
 
