@@ -28,6 +28,7 @@ func _ready():
 	carryingNode = get_node("Carrying") as Spatial
 	
 	scene.get_node("Tree").connect("body_entered", self, "on_entered_tree")
+	scene.get_node("Terrain/Area").connect("body_entered", self, "on_hit_terrain")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -54,6 +55,11 @@ func process_movement_inputs():
 	if jumpState == JumpState.IDLE && Input.is_action_just_pressed("movement_jump"):
 		self.set_axis_velocity(Vector3.UP * jumpSpeed)
 		jumpState = JumpState.AIRBORNE
+
+func on_hit_terrain(body):
+	if body != self:
+		return
+	jumpState = JumpState.IDLE
 
 func on_entered_tree(body):
 	if body != self:
