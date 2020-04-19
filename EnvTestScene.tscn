@@ -12,6 +12,15 @@
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 8, 16 )
 
+[node name="DebugLabel" type="Label" parent="Camera"]
+margin_right = 821.0
+margin_bottom = 495.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
 
