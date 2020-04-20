@@ -25,7 +25,7 @@ maxPlanarSpeed = 5.0
 jumpSpeed = 10.0
 
 [node name="Carrying" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 visible = false

@@ -95,6 +95,7 @@ func pickup_item():
 		carryingNode.add_child(carriedItem)
 		carriedItem.set_transform(Transform.IDENTITY)
 		carriedItem.sleeping = true
+		(carriedItem.get_node("CollisionShape") as CollisionShape).disabled = true
 
 func drop_item():
 	carryingNode.remove_child(carriedItem)
@@ -103,4 +104,5 @@ func drop_item():
 	carriedItem.transform *= self.transform
 	carriedItem.linear_velocity = self.linear_velocity + self.linear_velocity.normalized() * 3.0
 	carriedItem.sleeping = false
+	(carriedItem.get_node("CollisionShape") as CollisionShape).disabled = false
 	carriedItem = null

@@ -16,5 +16,6 @@ func on_entered_tree(body):
 	if body != self:
 		return
 	self.sleeping = true
+	(get_node("CollisionShape") as CollisionShape).disabled = true
 	yield(get_tree().create_timer(1.0), "timeout")
 	get_parent().remove_child(self)
