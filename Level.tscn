@@ -105,14 +105,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2113, -5.69546, -41.6607 )
 transform = Transform( 0.430795, 0.90245, 1.47028e-07, 0, -1.62921e-07, 1, 0.90245, -0.430795, -7.01853e-08, 21.5948, -5.01795, -29.7878 )
 
 [node name="PlayerCharacter" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2327, -3.76737, -32.3212 )
+transform = Transform( 0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 7.33304, -0.73818, -18.5061 )
 pickupRadius = 2.0
 movementForce = 1500.0
 maxPlanarSpeed = 8.0
 jumpSpeed = 7.0
 
 [node name="Camera" type="Camera" parent="PlayerCharacter"]
-transform = Transform( -0.988796, 0.0856213, -0.12228, 0, 0.819152, 0.573577, 0.149276, 0.56715, -0.809974, -1.35537, 6.22141, -9.24467 )
+transform = Transform( -1, 1.86895e-07, -2.66914e-07, 0, 0.819152, 0.573577, 3.25841e-07, 0.573577, -0.819152, 0, 7, -7 )
 fov = 65.0
 far = 1000.0
 
@@ -126,7 +126,7 @@ __meta__ = {
 }
 
 [node name="Tree" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.90041, 1.90735e-06, -18.9712 )
+transform = Transform( 0.958582, 0, -0.284819, 0, 1, 0, 0.284819, 0, 0.958582, -3.90041, 1.90735e-06, -18.9712 )
 
 [node name="Terrain" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66671, -7.5766, -8.17809 )
@@ -245,7 +245,7 @@ transform = Transform( 0.863437, -0.0792872, 0.498187, 0.0651963, 0.996828, 0.04
 transform = Transform( -0.863432, -0.0792909, -0.498194, -0.0651957, 0.996827, -0.0456594, 0.500234, -0.00694365, -0.865862, -40.5078, -5.96878, 28.8143 )
 
 [node name="lantern" parent="Environment/fence4" instance=ExtResource( 15 )]
-transform = Transform( 1, 2.30502e-08, 1.78814e-07, 3.49246e-09, 1, 3.67872e-08, 2.98023e-08, -5.58794e-09, 1, -1.25253, 0.98492, 0.0518684 )
+transform = Transform( 0.940796, -0.0193733, -0.338419, 0.0116453, 0.999625, -0.0248514, 0.338773, 0.0194392, 0.940668, -1.25253, 0.984919, 0.0518703 )
 
 [node name="fence5" parent="Environment" instance=ExtResource( 6 )]
 transform = Transform( 0.958934, 0, -0.28363, 0, 1, 0, 0.28363, 0, 0.958934, 12.0897, -6.40315, -50.3836 )
@@ -516,3 +516,6 @@ transform = Transform( 0.647003, 0, -0.762488, 0, 1, 0, 0.762488, 0, 0.647003, -
 
 [node name="box32" parent="Environment" instance=ExtResource( 2 )]
 transform = Transform( 0.883087, 0, 0.46921, 0, 1, 0, -0.46921, 0, 0.883087, -1.21754, -7.17061, 49.7494 )
+
+[node name="lantern2" parent="Environment" instance=ExtResource( 15 )]
+transform = Transform( 0.9945, 0, -0.104737, 0, 1, 0, 0.104737, 0, 0.9945, -37.8507, -5.80256, 13.8646 )
