@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://environment/Terrain.tscn" type="PackedScene" id=1]
+[ext_resource path="res://environment/box1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://default_env.tres" type="Environment" id=3]
 [ext_resource path="res://player/PlayerCharacter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://environment/silo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://environment/fence1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://environment/fence2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://items/Fertilizerpile.tscn" type="PackedScene" id=8]
@@ -12,6 +14,8 @@
 [ext_resource path="res://environment/rock3.tscn" type="PackedScene" id=12]
 [ext_resource path="res://environment/rock4.tscn" type="PackedScene" id=13]
 [ext_resource path="res://tree/Tree.tscn" type="PackedScene" id=14]
+[ext_resource path="res://environment/lantern.tscn" type="PackedScene" id=15]
+[ext_resource path="res://items/axe.tscn" type="PackedScene" id=16]
 
 [node name="Level" type="Spatial"]
 
@@ -71,3 +75,15 @@ transform = Transform( -0.475317, 0, -0.879815, 0, 1, 0, 0.879815, 0, -0.475317,
 
 [node name="Terrain" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66671, -7.5766, -8.17809 )
+
+[node name="box1" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.469, -5.20439, -42.0522 )
+
+[node name="silo" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9969, -6.35135, -27.2297 )
+
+[node name="lantern" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4783, -3.57553, -27.4331 )
+
+[node name="axe" parent="." instance=ExtResource( 16 )]
+transform = Transform( 0.430795, 0.90245, 1.47028e-07, 0, -1.62921e-07, 1, 0.90245, -0.430795, -7.01853e-08, 21.5948, -5.01795, -29.7878 )
