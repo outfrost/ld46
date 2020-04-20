@@ -9,3 +9,4 @@
 	* [ ] Rotating the player with movement
 	* [ ] Playing animations
 * [x] AO
+* [ ] Make feeding the Tree work

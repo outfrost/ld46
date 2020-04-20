@@ -2,7 +2,7 @@
 
 [ext_resource path="res://environment/Terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/box1.tscn" type="PackedScene" id=2]
-[ext_resource path="res://level_env.tres" type="Environment" id=3]
+[ext_resource path="res://default_env.tres" type="Environment" id=3]
 [ext_resource path="res://player/PlayerCharacter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://environment/silo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://environment/fence1.tscn" type="PackedScene" id=6]
@@ -22,6 +22,9 @@
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
+
+[node name="Terrain" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66671, -7.5766, -8.17809 )
 
 [node name="ItemSpawner" type="Node" parent="."]
 script = ExtResource( 17 )
@@ -127,9 +130,6 @@ __meta__ = {
 
 [node name="Tree" parent="." instance=ExtResource( 14 )]
 transform = Transform( 0.958582, 0, -0.284819, 0, 1, 0, 0.284819, 0, 0.958582, -3.90041, 1.90735e-06, -18.9712 )
-
-[node name="Terrain" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66671, -7.5766, -8.17809 )
 
 [node name="Environment" type="Node" parent="."]
 
@@ -517,5 +517,35 @@ transform = Transform( 0.647003, 0, -0.762488, 0, 1, 0, 0.762488, 0, 0.647003, -
 [node name="box32" parent="Environment" instance=ExtResource( 2 )]
 transform = Transform( 0.883087, 0, 0.46921, 0, 1, 0, -0.46921, 0, 0.883087, -1.21754, -7.17061, 49.7494 )
 
+[node name="lantern3" parent="Environment" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 0.990833, -0.135093, 0, 0.135093, 0.990833, 11.0287, -6.50568, 5.19357 )
+
+[node name="lantern5" parent="Environment" instance=ExtResource( 15 )]
+transform = Transform( 0.776286, -0.0370402, -0.629291, 0.0314433, 0.999305, -0.0200311, 0.629596, -0.00423716, 0.776911, -28.1066, -6.42075, -16.7977 )
+
+[node name="lantern7" parent="Environment" instance=ExtResource( 15 )]
+transform = Transform( 0.835806, 0.090586, -0.541501, -0.0450017, 0.994279, 0.0968699, 0.547178, -0.0565959, 0.835101, 20.8517, -5.64141, -35.7598 )
+
 [node name="lantern2" parent="Environment" instance=ExtResource( 15 )]
-transform = Transform( 0.9945, 0, -0.104737, 0, 1, 0, 0.104737, 0, 0.9945, -37.8507, -5.80256, 13.8646 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 66.7899, -7.12257, -50.7832 )
+
+[node name="silo4" parent="Environment" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54.007, -7.24092, -55.7089 )
+
+[node name="box36" parent="Environment" instance=ExtResource( 2 )]
+transform = Transform( 0.866749, 0, 0.498745, 0, 1, 0, -0.498745, 0, 0.866749, 51.5809, -6.63842, -53.5561 )
+
+[node name="fence8" parent="Environment" instance=ExtResource( 6 )]
+transform = Transform( 0.367914, 0, 0.92986, 0, 1, 0, -0.92986, 0, 0.367914, 55.1228, -7.1616, -59.1971 )
+
+[node name="fence9" parent="Environment" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.1539, -7.07158, -63.7587 )
+
+[node name="fence10" parent="Environment" instance=ExtResource( 7 )]
+transform = Transform( 0.367914, 0, 0.92986, 0, 1, 0, -0.92986, 0, 0.367914, 56.028, -7.16018, -61.4416 )
+
+[node name="fence11" parent="Environment" instance=ExtResource( 6 )]
+transform = Transform( 0.9299, -0.0244131, -0.367001, 0.0509173, 0.996732, 0.0627101, 0.364271, -0.0770009, 0.928104, 53.8195, -7.22835, -62.3794 )
+
+[node name="lantern4" parent="Environment" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5379, -1.30053, -63.0588 )
