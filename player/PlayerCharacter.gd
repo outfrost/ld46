@@ -56,9 +56,6 @@ func process_movement_inputs():
 		self.set_axis_velocity(Vector3.UP * jumpSpeed)
 		jumpState = JumpState.AIRBORNE
 
-func _on_Bullet_body_entered():
-	
-
 func on_body_entered(body):
 	print_debug("FUCK")
 	if body.name == "Terrain":
