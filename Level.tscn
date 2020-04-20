@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://environment/Terrain.tscn" type="PackedScene" id=1]
+[ext_resource path="res://default_env.tres" type="Environment" id=3]
+[ext_resource path="res://player/PlayerCharacter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://environment/fence1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://environment/fence2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://items/Fertilizerpile.tscn" type="PackedScene" id=8]
+[ext_resource path="res://items/potion3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://environment/rock1.tscn" type="PackedScene" id=10]
+[ext_resource path="res://environment/rock2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://environment/rock3.tscn" type="PackedScene" id=12]
+[ext_resource path="res://environment/rock4.tscn" type="PackedScene" id=13]
+[ext_resource path="res://tree/Tree.tscn" type="PackedScene" id=14]
+
+[node name="Level" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 3 )
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Fertilizerpile" parent="Items" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51942, -4.58838, -39.1082 )
+
+[node name="potion3" parent="Items" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2113, -5.69546, -41.6607 )
+
+[node name="PlayerCharacter" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2327, -3.76737, -32.3212 )
+pickupRadius = 2.0
+jumpSpeed = 7.0
+
+[node name="Camera" type="Camera" parent="PlayerCharacter"]
+transform = Transform( -0.988796, 0.0856213, -0.12228, 0, 0.819152, 0.573577, 0.149276, 0.56715, -0.809974, -1.35537, 6.22141, -9.24467 )
+fov = 65.0
+far = 1000.0
+
+[node name="DebugLabel" type="Label" parent="PlayerCharacter/Camera"]
+margin_right = 500.0
+margin_bottom = 250.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tree" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.90041, 1.90735e-06, -18.9712 )
+
+[node name="fence1" parent="." instance=ExtResource( 6 )]
+transform = Transform( -0.33458, 0, 0.942367, -0.00108553, 0.999999, -0.000385408, -0.942367, -0.00115192, -0.33458, 15.2789, -4.54939, -25.0892 )
+
+[node name="fence2" parent="." instance=ExtResource( 7 )]
+transform = Transform( -0.33458, 0, 0.942367, -0.00108553, 0.999999, -0.000385408, -0.942367, -0.00115192, -0.33458, 14.4721, -4.552, -27.3562 )
+
+[node name="rock1" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.908807, 0, -0.417217, 0, 1, 0, 0.417217, 0, 0.908807, 22.8103, -4.68865, -36.7201 )
+
+[node name="rock2" parent="." instance=ExtResource( 11 )]
+transform = Transform( -0.0194941, 0, -0.99981, 0, 1, 0, 0.99981, 0, -0.0194941, 23.7796, -4.46492, -34.3932 )
+
+[node name="rock3" parent="." instance=ExtResource( 12 )]
+transform = Transform( -0.807641, 0, -0.589675, 0, 1, 0, 0.589675, 0, -0.807641, 20.3083, -4.04828, -39.4958 )
+
+[node name="rock4" parent="." instance=ExtResource( 13 )]
+transform = Transform( -0.0803907, 0, 0.996763, 0, 1, 0, -0.996763, 0, -0.0803907, 23.8879, -3.62214, -38.7524 )
+
+[node name="rock5" parent="." instance=ExtResource( 13 )]
+transform = Transform( -0.475317, 0, -0.879815, 0, 1, 0, 0.879815, 0, -0.475317, 24.9287, -3.62214, -36.5286 )
+
+[node name="Terrain" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66671, -7.5766, -8.17809 )

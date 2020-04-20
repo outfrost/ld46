@@ -23,12 +23,12 @@ var jumpState = JumpState.IDLE
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	scene = get_tree().get_root().get_child(0)
-	camera = scene.get_node("Camera") as Camera
+	camera = self.get_node("Camera") as Camera
 	debugLabel = camera.get_node("DebugLabel") as Label
-	carryingNode = get_node("Carrying") as Spatial
+	carryingNode = self.get_node("Carrying") as Spatial
 	
 	scene.get_node("Tree").connect("body_entered", self, "on_entered_tree")
-	scene.get_node("Terrain/Area").connect("body_entered", self, "on_hit_terrain")
+	self.connect("body_entered", self, "on_body_entered")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -56,9 +56,18 @@ func process_movement_inputs():
 		self.set_axis_velocity(Vector3.UP * jumpSpeed)
 		jumpState = JumpState.AIRBORNE
 
+func _on_Bullet_body_entered():
+	
+
+func on_body_entered(body):
+	print_debug("FUCK")
+	if body.name == "Terrain":
+		print_debug("WOO")
+
 func on_hit_terrain(body):
 	if body != self:
 		return
+	print_debug("Hit terrain")
 	jumpState = JumpState.IDLE
 
 func on_entered_tree(body):
