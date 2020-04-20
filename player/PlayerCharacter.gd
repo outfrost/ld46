@@ -19,6 +19,7 @@ var debugLabel: Label
 var carryingNode: Spatial
 var carriedItem: RigidBody = null
 var jumpState = JumpState.IDLE
+var lastVelocity: Vector3 = Vector3.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,13 +28,20 @@ func _ready():
 	debugLabel = camera.get_node("DebugLabel") as Label
 	carryingNode = self.get_node("Carrying") as Spatial
 	
-	scene.get_node("Tree").connect("body_entered", self, "on_entered_tree")
-	self.connect("body_entered", self, "on_body_entered")
+	scene.get_node("Tree").connect("body_entered", self, "on_body_entered_tree")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 
 func _physics_process(delta):
+	var accel = (self.linear_velocity - lastVelocity) / delta
+	#debugLabel.text = String(-(9.7 * self.gravity_scale))
+	if accel.y > -(9.7 * self.gravity_scale):
+		self.jumpState = JumpState.IDLE
+	else:
+		self.jumpState = JumpState.AIRBORNE
+	lastVelocity = self.linear_velocity
+	
 	process_movement_inputs()
 	if Input.is_action_just_pressed("item_pickup"):
 		on_item_pickup()
@@ -45,7 +53,6 @@ func process_movement_inputs():
 		right * (Input.get_action_strength("movement_right") - Input.get_action_strength("movement_left"))
 		+ forward * (Input.get_action_strength("movement_forward") - Input.get_action_strength("movement_backward"))
 	).normalized()
-	debugLabel.text = String(movementDirection)
 	self.add_central_force(movementDirection * movementForce)
 	var planarLinearSpeed = vector_util.discard_y(self.linear_velocity).length()
 	if planarLinearSpeed > maxPlanarSpeed:
@@ -54,20 +61,9 @@ func process_movement_inputs():
 	
 	if jumpState == JumpState.IDLE && Input.is_action_just_pressed("movement_jump"):
 		self.set_axis_velocity(Vector3.UP * jumpSpeed)
-		jumpState = JumpState.AIRBORNE
+		#jumpState = JumpState.AIRBORNE
 
-func on_body_entered(body):
-	print_debug("FUCK")
-	if body.name == "Terrain":
-		print_debug("WOO")
-
-func on_hit_terrain(body):
-	if body != self:
-		return
-	print_debug("Hit terrain")
-	jumpState = JumpState.IDLE
-
-func on_entered_tree(body):
+func on_body_entered_tree(body):
 	if body != self:
 		return
 	on_item_drop()
