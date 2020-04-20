@@ -5777,3 +5777,10 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 6, 0 )
 shape = SubResource( 4 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
+light_color = Color( 0.9, 0.36, 0.63, 1 )
+light_indirect_energy = 2.0
+omni_range = 42.0
+omni_attenuation = 2.54912

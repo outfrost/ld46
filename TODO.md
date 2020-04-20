@@ -8,3 +8,4 @@
 * [ ] Player animation
 	* [ ] Rotating the player with movement
 	* [ ] Playing animations
+* [ ] AO
