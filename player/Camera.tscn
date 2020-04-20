@@ -1,0 +1,15 @@
+[gd_scene format=2]
+
+[node name="Camera" type="Camera"]
+transform = Transform( -1, 1.86895e-07, -2.66914e-07, 0, 0.819152, 0.573577, 3.25841e-07, 0.573577, -0.819152, 0, 7, -7 )
+fov = 65.0
+far = 1000.0
+
+[node name="DebugLabel" type="Label" parent="."]
+margin_right = 500.0
+margin_bottom = 250.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}

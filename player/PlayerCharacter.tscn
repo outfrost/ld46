@@ -2,15 +2,9 @@
 
 [ext_resource path="res://player/PlayerCharacter.gd" type="Script" id=1]
 [ext_resource path="res://player/PlayerModel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/Camera.tscn" type="PackedScene" id=3]
 
-[sub_resource type="CylinderMesh" id=1]
-top_radius = 0.5
-bottom_radius = 0.5
-height = 1.8
-radial_segments = 7
-rings = 1
-
-[sub_resource type="CapsuleShape" id=2]
+[sub_resource type="CapsuleShape" id=1]
 radius = 0.55
 height = 0.8
 
@@ -24,17 +18,23 @@ movementForce = 750.0
 maxPlanarSpeed = 5.0
 jumpSpeed = 10.0
 
-[node name="Carrying" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
-
-[node name="MeshInstance" type="MeshInstance" parent="."]
-visible = false
-mesh = SubResource( 1 )
-material/0 = null
-
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, -0.05, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
+[node name="RotatingStuff" type="Spatial" parent="."]
+
+[node name="Player" parent="RotatingStuff" instance=ExtResource( 2 )]
 transform = Transform( -0.04, 0, -1.30337e-08, 0, 0.04, 0, 1.30337e-08, 0, -0.04, 0, -1, 0 )
+
+[node name="Carrying" type="Spatial" parent="RotatingStuff"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+
+[node name="CameraOrbit" type="Spatial" parent="."]
+
+[node name="CameraPivot" type="Spatial" parent="CameraOrbit"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 8 )
+
+[node name="Camera" parent="CameraOrbit/CameraPivot" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0, 0, 0 )
+fov = 70.0
