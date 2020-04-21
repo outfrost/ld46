@@ -1,5 +1,7 @@
 extends Area
 
+var FeedItem = preload("res://items/FeedItem.gd")
+
 signal died;
 
 export var leafMaterial: SpatialMaterial
@@ -15,6 +17,7 @@ var died = false
 
 func _ready():
 	(gameOverOverlay.get_node("Button") as Button).connect("pressed", self, "on_restart_pressed")
+	self.connect("body_entered", self, "on_body_entered")
 
 func _process(delta):
 	if died:
@@ -25,7 +28,12 @@ func _process(delta):
 	leafMaterial.emission_energy = lerp(0.0, defEmissionEnergy, hp / 100.0)
 	if (abs(hp) < 0.1):
 		emit_signal("died")
+		leafMaterial.emission_energy = defEmissionEnergy
 		gameOverOverlay.visible = true
 
 func on_restart_pressed():
 	get_tree().reload_current_scene()
+
+func on_body_entered(body):
+	if body is FeedItem:
+		hp += 25.0

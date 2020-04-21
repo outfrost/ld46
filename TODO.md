@@ -1,7 +1,7 @@
 * [ ] Invisible walls to prevent ascending hills
 * [ ] SFX
 * [x] Materials
-* [ ] Level design
+* [x] Level design
 * [x] Spawning items
 * [ ] Enemies
 * [ ] Weapon
@@ -9,4 +9,4 @@
 	* [ ] Rotating the player with movement
 	* [ ] Playing animations
 * [x] AO
-* [ ] Make feeding the Tree work
+* [x] Make feeding the Tree work
