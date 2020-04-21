@@ -28,7 +28,7 @@ environment = ExtResource( 3 )
 
 [node name="ItemSpawner" type="Node" parent="."]
 script = ExtResource( 17 )
-spawnInterval = 3.0
+spawnInterval = 60.0
 thingsToSpawn = [ ExtResource( 8 ), ExtResource( 9 ) ]
 
 [node name="Spatial" type="Spatial" parent="ItemSpawner"]
@@ -97,12 +97,6 @@ transform = Transform( -0.973042, 0, -0.230627, 0, 1, 0, 0.230627, 0, -0.973042,
 [node name="Position3D" type="Position3D" parent="ItemSpawner/Spatial8"]
 
 [node name="Items" type="Node" parent="."]
-
-[node name="Fertilizerpile" parent="Items" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8073, -5.43212, -42.6092 )
-
-[node name="potion3" parent="Items" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2113, -5.69546, -41.6607 )
 
 [node name="axe" parent="Items" instance=ExtResource( 16 )]
 transform = Transform( 0.430795, 0.90245, 1.47028e-07, 0, -1.62921e-07, 1, 0.90245, -0.430795, -7.01853e-08, 21.5948, -5.01795, -29.7878 )
