@@ -5,8 +5,8 @@
 * [x] Spawning items
 * [ ] Enemies
 * [ ] Weapon
-* [ ] Player animation
-	* [ ] Rotating the player with movement
-	* [ ] Playing animations
+* [x] Player animation
+	* [x] Rotating the player with movement
+	* [x] Playing animations
 * [x] AO
 * [x] Make feeding the Tree work

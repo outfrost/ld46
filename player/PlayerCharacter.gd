@@ -19,6 +19,7 @@ var rotatingStuff: Spatial
 var cameraOrbit: Spatial
 var camera: Camera
 var debugLabel: Label
+var animationPlayer: AnimationPlayer
 var carryingNode: Spatial
 var carriedItem: RigidBody = null
 var jumpState = JumpState.IDLE
@@ -37,6 +38,7 @@ func _ready():
 	cameraOrbit = self.get_node("CameraOrbit") as Spatial
 	camera = cameraOrbit.get_node("CameraPivot/Camera") as Camera
 	debugLabel = camera.get_node("DebugLabel") as Label
+	animationPlayer = rotatingStuff.get_node("Player/AnimationPlayer")
 	carryingNode = rotatingStuff.get_node("Carrying") as Spatial
 	
 	tree.connect("body_entered", self, "on_body_entered_tree")
@@ -58,6 +60,11 @@ func _physics_process(delta):
 	else:
 		self.jumpState = JumpState.AIRBORNE
 	lastVelocity = self.linear_velocity
+	var planarSpeed = vector_util.discard_y(self.linear_velocity).length()
+	if planarSpeed > 2.0:
+		animationPlayer.play("Armature|Running Loop", -1, 1.5)
+	else:
+		animationPlayer.play("Armature|Action")
 	
 	process_movement_inputs()
 	if Input.is_action_just_pressed("item_pickup"):
@@ -92,6 +99,9 @@ func process_movement_inputs():
 	#debugLabel.text = String(t)
 	camera.transform = cameraDefTransform.interpolate_with(cameraRotatedTransform, t)
 	camera.fov = lerp(cameraDefFov, cameraDefFov + 15, t)
+	
+	var modelDirection = vector_util.discard_y(- rotatingStuff.global_transform.basis.z).normalized()
+	rotatingStuff.rotate_y(modelDirection.angle_to(movementDirection) * (- sign(movementDirection.x)))
 
 func on_body_entered_tree(body):
 	if body != self:
