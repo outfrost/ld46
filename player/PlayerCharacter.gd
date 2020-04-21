@@ -14,7 +14,7 @@ export var maxPlanarSpeed: float
 export var jumpSpeed: float
 
 var scene: Node
-var tree: Spatial
+var tree: Area
 var rotatingStuff: Spatial
 var cameraOrbit: Spatial
 var camera: Camera
@@ -23,8 +23,7 @@ var carryingNode: Spatial
 var carriedItem: RigidBody = null
 var jumpState = JumpState.IDLE
 var lastVelocity: Vector3 = Vector3.ZERO
-#var mouse_sens = 0.3
-#var camera_anglev = 0
+var gameOver = false
 
 var cameraDefTransform: Transform
 var cameraRotatedTransform: Transform
@@ -33,7 +32,7 @@ var cameraDefFov: float
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	scene = get_tree().get_root().get_child(0)
-	tree = scene.get_node("Tree") as Spatial
+	tree = scene.get_node("Tree")
 	rotatingStuff = self.get_node("RotatingStuff") as Spatial
 	cameraOrbit = self.get_node("CameraOrbit") as Spatial
 	camera = cameraOrbit.get_node("CameraPivot/Camera") as Camera
@@ -41,6 +40,7 @@ func _ready():
 	carryingNode = rotatingStuff.get_node("Carrying") as Spatial
 	
 	tree.connect("body_entered", self, "on_body_entered_tree")
+	tree.connect("died", self, "on_tree_died")
 	
 	cameraDefTransform = camera.transform
 	cameraRotatedTransform = cameraDefTransform.rotated(Vector3.RIGHT, deg2rad(40.0))
@@ -50,8 +50,9 @@ func _ready():
 #func _process(delta):
 
 func _physics_process(delta):
+	if gameOver:
+		return
 	var accel = (self.linear_velocity - lastVelocity) / delta
-	#debugLabel.text = String(-(9.7 * self.gravity_scale))
 	if accel.y > -(9.7 * self.gravity_scale):
 		self.jumpState = JumpState.IDLE
 	else:
@@ -61,14 +62,6 @@ func _physics_process(delta):
 	process_movement_inputs()
 	if Input.is_action_just_pressed("item_pickup"):
 		on_item_pickup()
-
-#func _input(event):         
-	#if event is InputEventMouseMotion:
-	#	rotatingStuff.rotate_y(deg2rad(- event.relative.x * mouse_sens))
-	#	var changev = - event.relative.y * mouse_sens
-		#if camera_anglev + changev > - 50 and camera_anglev + changev < 50:
-		#	camera_anglev += changev
-		#	camera.rotate_x(deg2rad(changev))
 
 func process_movement_inputs():
 	var forward = vector_util.discard_y(- camera.global_transform.basis.z).normalized()
@@ -96,7 +89,7 @@ func process_movement_inputs():
 	var distanceToTree = vector_util.discard_y(tree.global_transform.origin - self.global_transform.origin).length()
 	var t = smoothstep(0.0, 1.0, clamp(1 - (distanceToTree / 75.0), 0.0, 1.0))
 	t *= t # squared
-	debugLabel.text = String(t)
+	#debugLabel.text = String(t)
 	camera.transform = cameraDefTransform.interpolate_with(cameraRotatedTransform, t)
 	camera.fov = lerp(cameraDefFov, cameraDefFov + 15, t)
 
@@ -115,6 +108,9 @@ func on_item_drop():
 	if carriedItem == null:
 		return
 	drop_item()
+
+func on_tree_died():
+	gameOver = true
 
 func pickup_item():
 	var minDist = 0.0

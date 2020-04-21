@@ -1,14 +1,31 @@
 extends Area
 
-export var leafMaterial: Material
+signal died;
 
-onready var light = self.get_node("OmniLight")
+export var leafMaterial: SpatialMaterial
+export var hpDecayRate: float
 
-# Called when the node enters the scene tree for the first time.
+onready var scene: Node = get_tree().get_root().get_child(0)
+onready var gameOverOverlay: Panel = scene.find_node("Camera").get_node("GameOverOverlay")
+onready var light: OmniLight = self.get_node("OmniLight")
+onready var defLightEnergy = light.light_energy
+onready var defEmissionEnergy = leafMaterial.emission_energy
+var hp = 100.0
+var died = false
+
 func _ready():
-	pass # Replace with function body.
+	(gameOverOverlay.get_node("Button") as Button).connect("pressed", self, "on_restart_pressed")
 
+func _process(delta):
+	if died:
+		return
+	hp -= hpDecayRate * delta
+	hp = clamp(hp, 0.0, 100.0)
+	light.light_energy = lerp(0.0, defLightEnergy, hp / 100.0)
+	leafMaterial.emission_energy = lerp(0.0, defEmissionEnergy, hp / 100.0)
+	if (abs(hp) < 0.1):
+		emit_signal("died")
+		gameOverOverlay.visible = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func on_restart_pressed():
+	get_tree().reload_current_scene()
