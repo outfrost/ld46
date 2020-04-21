@@ -100,8 +100,11 @@ func process_movement_inputs():
 	camera.transform = cameraDefTransform.interpolate_with(cameraRotatedTransform, t)
 	camera.fov = lerp(cameraDefFov, cameraDefFov + 15, t)
 	
-	var modelDirection = vector_util.discard_y(- rotatingStuff.global_transform.basis.z).normalized()
-	rotatingStuff.rotate_y(modelDirection.angle_to(movementDirection) * (- sign(movementDirection.x)))
+	#var modelDirection = vector_util.discard_y(- rotatingStuff.global_transform.basis.z).normalized()
+	rotatingStuff.rotate_y(directionForward.angle_to(movementDirection) * (- sign(movementDirection.x)))
+	rotatingStuff.transform = Transform.IDENTITY.rotated(
+		Vector3.UP,
+		directionForward.angle_to(movementDirection) * (- sign(movementDirection.x)))
 
 func on_body_entered_tree(body):
 	if body != self:
